@@ -7,8 +7,6 @@ const ACCESS_KEY = process.env.BLIP_ACCESS_KEY || 'YWY3cm1kRlNBMHZvS2E1Vk5DM2w='
 
 let client; // Variável para armazenar o cliente Blip
 
-//key vitoria sdk ZmtLUlRUcVNhVExYNThZRFpiVmE=
-
 // Função para conectar ao Blip
 const connectToBlip = async (apiKey) => {
 

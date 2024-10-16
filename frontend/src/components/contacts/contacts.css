@@ -1,0 +1,39 @@
+.contacts-container {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+  }
+  
+  .contact-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-left: 5px solid #4CAF50;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-item:hover {
+    background-color: #e9e9e9;
+  }
+  
+  .contact-name {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .contact-email {
+    font-size: 14px;
+    color: #777;
+  }
+  
