@@ -1,16 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from '../src/components/login';  // Importe o componente de Login
-//import Home from './components/Home';    // Importe o componente Home (será a lista de contatos)
+import Login from '../src/components/login'; 
+import Contacts from '../src/components/Contacts';
+
 
 // Defina as rotas dentro do Router
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />   {/* Rota de Login */}
+        <Route path="/" element={<Contacts />} />
+        <Route path="/login" element={<Login />} />
         
-        {/* Adicione mais rotas conforme necessário */}
       </Routes>
     </Router>
   );

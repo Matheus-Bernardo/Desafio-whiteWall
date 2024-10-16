@@ -43,6 +43,9 @@
   "express": "^4.21.1",
   
     
+  "lime-js": "^3.0.1",
+  
+    
   "lime-transport-websocket": "^2.0.3"
   
   }

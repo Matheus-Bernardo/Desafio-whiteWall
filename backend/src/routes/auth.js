@@ -1,7 +1,9 @@
 const express = require('express');
-const { connectToBlip } = require('../services/blipService'); 
-
+const { connectToBlip,getBlipClient } = require('../services/blipService'); 
+const Lime = require('lime-js'); 
 const router = express.Router();
+
+
 
 router.post('/login', async (req, res) => {
     const { apiKey } = req.body;
@@ -11,16 +13,38 @@ router.post('/login', async (req, res) => {
     }
 
     try {
-        // Defina a chave de acesso como uma variável global ou gerencie com sessão
-        process.env.BLIP_ACCESS_KEY = apiKey;
-
-        // Chame a função para conectar ao Blip com a nova chave
-        await connectToBlip();
-
+           await connectToBlip(apiKey);
+        
         res.status(200).json({ message: 'Autenticado com sucesso no Blip!' });
     } catch (err) {
         res.status(500).json({ error: 'Erro ao autenticar no Blip', details: err });
     }
+});
+
+
+router.get('/contacts', async (req, res) => {
+  const client = getBlipClient(); // Acesso ao cliente Blip autenticado
+  console.log(getBlipClient());
+
+  if (!client) {
+      return res.status(500).json({ error: 'Cliente Blip não conectado' });
+  }
+
+  try {
+      const response = await client.sendCommand({
+          id: Lime.Guid(), // Gera um ID único para o comando
+          method: 'get',
+          uri: '/contacts'
+      });
+
+      res.json({
+          success: true,
+          contacts: response.resource.items // Acessa a lista de contatos
+      });
+  } catch (error) {
+      console.error('Erro ao obter contatos:', error);
+      res.status(500).json({ success: false, message: 'Erro ao obter contatos.' });
+  }
 });
 
 module.exports = router; // Alteração para exportação no padrão CommonJS
