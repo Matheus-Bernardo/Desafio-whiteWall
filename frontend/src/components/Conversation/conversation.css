@@ -1,0 +1,29 @@
+.conversation-container {
+    padding: 20px;
+  }
+  
+  .messages-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .message.incoming {
+    align-self: flex-start;
+    background-color: #e1f7d5;
+  }
+  
+  .message.outgoing {
+    align-self: flex-end;
+    background-color: #d1e7f7;
+  }
+  
+  .message-content {
+    font-size: 14px;
+  }
+  

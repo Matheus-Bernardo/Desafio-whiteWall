@@ -45,5 +45,28 @@ router.get('/contacts', async (req, res) => {
       res.status(500).json({ success: false, message: 'Erro ao obter contatos.' });
   }
 });
+router.get('/contact/:id', async (req, res) => {
+    const contactId = req.params.id;
+    const client = getBlipClient(); // Acesso ao cliente Blip autenticado
 
-module.exports = router; // Alteração para exportação no padrão CommonJS
+    if (!client) {
+        return res.status(500).json({ error: 'Cliente Blip não conectado' });
+    }
+
+    try {
+        const response = await client.sendCommand({
+            id: Lime.Guid(),
+            method: 'get',
+            uri: `/messages/${contactId}` // Endpoint para buscar mensagens de um contato
+        });
+
+        res.json({
+            success: true,
+            messages: response.resource.items // Retorna as mensagens trocadas
+        });
+    } catch (error) {
+        console.error('Erro ao obter mensagens do contato:', error);
+        res.status(500).json({ success: false, message: 'Erro ao obter mensagens do contato.' });
+    }
+});
+module.exports = router;

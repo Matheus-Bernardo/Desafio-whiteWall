@@ -1,0 +1,87 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Chatbot Contacts Manager API",
+      "version": "1.0.0",
+      "description": "API para gerenciar contatos de um chatbot utilizando a API do Blip."
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000/api"
+      }
+    ],
+    "paths": {
+      "/login": {
+        "post": {
+          "summary": "Autentica o usuário com a API do Blip",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "apiKey": {
+                      "type": "string",
+                      "description": "API Key para autenticação.",
+                      "example": "sua_api_key_aqui"
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Autenticado com sucesso"
+              },
+              "400": {
+                "description": "API Key é obrigatória"
+              },
+              "500": {
+                "description": "Erro ao autenticar no Blip"
+              }
+            }
+          }
+        }
+      },
+      "/contacts": {
+        "get": {
+          "summary": "Obtém a lista de contatos",
+          "responses": {
+            "200": {
+              "description": "Lista de contatos obtida com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "boolean"
+                      },
+                      "contacts": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": { "type": "string" },
+                            "identity": { "type": "string" },
+                            "city": { "type": "string" },
+                            "phoneNumber": { "type": "string" },
+                            "gender": { "type": "string" }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Erro ao obter contatos"
+            }
+          }
+        }
+      }
+    }
+  }
+  

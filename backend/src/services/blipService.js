@@ -2,8 +2,8 @@ const BlipSdk = require('blip-sdk');
 const WebSocketTransport = require('lime-transport-websocket');
 const Lime = require('lime-js');
 // Variáveis de ambiente para o identificador do bot e chave de acesso
-const IDENTIFIER = process.env.BLIP_IDENTIFIER || 'chatbotmatheus';
-const ACCESS_KEY = process.env.BLIP_ACCESS_KEY || 'YWY3cm1kRlNBMHZvS2E1Vk5DM2w=';
+const IDENTIFIER = process.env.BLIP_IDENTIFIER || 'seubot';
+const ACCESS_KEY = process.env.BLIP_ACCESS_KEY || 'sua key';
 
 let client; // Variável para armazenar o cliente Blip
 
